@@ -16,12 +16,6 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
 	List<Produit> findByNomProduitContains(String nom);
 	List<Produit> findByCategorieIdCat(Long id);
 	List<Produit> findByOrderByNomProduitAsc();
-	
-	// JPQL : JPA query language
-	// %?1 le premier parametre ( String nom ) ..?2 deuxiem parametre (Double prix)
-	
-	/*@Query("select p from Produit p where p.nomProduit like %?1 and p.prixProduit > ?2")
-	List<Produit> findByNomPrix (String nom, Double prix);*/
 
 	
 	@Query("select p from Produit p where p.nomProduit like %:nom and p.prixProduit > :prix")
